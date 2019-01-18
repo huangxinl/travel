@@ -3,7 +3,9 @@
         <swiper :options="swiperOption">
         <!-- slides -->
         <swiper-slide v-for="item of data"  :key="item.id">
-            <img :src="item.imgUrl" alt="" class="myGirl">
+          <div class="girl-limt">
+             <img :src="item.imgUrl" alt="" class="myGirl">
+          </div>
         </swiper-slide>
         <!-- Optional controls -->
         <div class="swiper-pagination"  slot="pagination"></div>
@@ -18,23 +20,24 @@ export default {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
-        loop: true
+        loop: true,
+        autoplay: false
       },
       data: [{
         id: '001',
-        imgUrl: 'static/img/wq1.jpeg'
+        imgUrl: 'static/img/wq1.png'
       }, {
         id: '002',
-        imgUrl: 'static/img/wq2.jpeg'
+        imgUrl: 'static/img/wq2.png'
       }, {
         id: '003',
-        imgUrl: 'static/img/wq3.jpeg'
+        imgUrl: 'static/img/wq3.png'
       }, {
         id: '004',
-        imgUrl: 'static/img/wq4.jpeg'
+        imgUrl: 'static/img/wq4.png'
       }, {
         id: '005',
-        imgUrl: 'static/img/wq5.jpeg'
+        imgUrl: 'static/img/wq5.png'
       }]
     }
   }
@@ -46,10 +49,13 @@ export default {
     background-color #fff
 .wrapper
     width 100%
-    height 31.25vw
-    .myGirl
-        display inline-block
-        width 100%
-        height 2.6rem
-        overflow hidden
+    height 0
+    padding-bottom 31.25%
+    background-color #eee
+    overflow hidden
+    .girl-limt
+      height 0
+      padding-bottom 31.25%
+      .myGirl
+          width 100%
 </style>
