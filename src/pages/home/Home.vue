@@ -3,7 +3,7 @@
       <home-header :city = "city"></home-header>
       <home-swiper></home-swiper>
       <home-icons :iconList = "iconList"></home-icons>
-      text
+      <home-recommend :recommendList= "recommendList"></home-recommend>
   </div>
 </template>
 
@@ -11,6 +11,7 @@
 import HomeHeader from './components/header'
 import HomeSwiper from './components/swiper'
 import HomeIcons from './components/icons'
+import HomeRecommend from './components/recommend'
 import axios from 'axios'
 
 export default {
@@ -18,13 +19,15 @@ export default {
   data(){
     return {
       city: '',
-      iconList: []
+      iconList: [],
+      recommendList: []
     }
   },
   components: {
     HomeHeader,
     HomeSwiper,
-    HomeIcons
+    HomeIcons,
+    HomeRecommend
   },
   mounted(){
     this._cityList()
@@ -47,7 +50,7 @@ export default {
           console.log(res.data.data)
           const data = res.data.data
           self.iconList = data.iconList
-          console.log(self.iconList)
+          self.recommendList = data.recommendList
         }
       })
     }

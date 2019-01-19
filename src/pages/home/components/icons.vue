@@ -47,6 +47,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~styles/mixins.styl'
+
 .icons-wrapper {
   width: 100%;
   height: 0;
@@ -75,6 +77,7 @@ export default {
         }
         .icon-text {
           line-height: 0.44rem;
+          ellipsis()
         }
       }
     }
