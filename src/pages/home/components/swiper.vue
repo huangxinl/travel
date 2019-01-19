@@ -2,7 +2,7 @@
     <div class="wrapper">
         <swiper :options="swiperOption">
         <!-- slides -->
-        <swiper-slide v-for="item of data"  :key="item.id">
+        <swiper-slide v-for="item of swiperList"  :key="item.id">
           <div class="girl-limt">
              <img :src="item.imgUrl" alt="" class="myGirl">
           </div>
@@ -16,29 +16,33 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    swiperList: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true,
         autoplay: false
-      },
-      data: [{
-        id: '001',
-        imgUrl: 'static/img/wq1.png'
-      }, {
-        id: '002',
-        imgUrl: 'static/img/wq2.png'
-      }, {
-        id: '003',
-        imgUrl: 'static/img/wq3.png'
-      }, {
-        id: '004',
-        imgUrl: 'static/img/wq4.png'
-      }, {
-        id: '005',
-        imgUrl: 'static/img/wq5.png'
-      }]
+      }
+      // ,
+      // data: [{
+      //   id: '001',
+      //   imgUrl: 'static/img/wq1.png'
+      // }, {
+      //   id: '002',
+      //   imgUrl: 'static/img/wq2.png'
+      // }, {
+      //   id: '003',
+      //   imgUrl: 'static/img/wq3.png'
+      // }, {
+      //   id: '004',
+      //   imgUrl: 'static/img/wq4.png'
+      // }, {
+      //   id: '005',
+      //   imgUrl: 'static/img/wq5.png'
+      // }]
     }
   }
 }
