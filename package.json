@@ -17,7 +17,8 @@
     "stylus-loader": "^3.0.2",
     "fastclick": "^1.0.6",
     "vue-awesome-swiper": "^2.6.7",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "better-scroll": "^1.13.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

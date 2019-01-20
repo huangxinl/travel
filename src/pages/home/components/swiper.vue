@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <swiper :options="swiperOption">
+        <swiper :options="swiperOption" v-if="swiperList.length">
         <!-- slides -->
         <swiper-slide v-for="item of swiperList"  :key="item.id">
           <div class="girl-limt">
@@ -24,7 +24,9 @@ export default {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true,
-        autoplay: false
+        autoplay: true,
+        speed: 2000,
+        autoplayDisableOnInteraction: false
       }
       // ,
       // data: [{

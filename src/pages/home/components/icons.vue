@@ -72,7 +72,7 @@ export default {
         .icon-img {
           display: inline-block;
           height: 100%;
-          padding: 0.1rem;
+          padding: 0.23rem;
           box-sizing: border-box;
         }
         .icon-text {

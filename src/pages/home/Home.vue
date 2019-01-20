@@ -14,7 +14,8 @@ import HomeSwiper from './components/swiper'
 import HomeIcons from './components/icons'
 import HomeRecommend from './components/recommend'
 import HomeList from './components/list'
-import axios from 'axios'
+import HomeCity from '../city/city'
+import Axios from 'axios'
 
 export default {
   name: 'Home',
@@ -33,7 +34,8 @@ export default {
     HomeSwiper,
     HomeIcons,
     HomeRecommend,
-    HomeList
+    HomeList,
+    HomeCity
   },
   mounted(){
     this._cityList()
@@ -42,7 +44,7 @@ export default {
   methods: {
     _cityList(){
       const self = this
-      axios.get('/static/mock/city.json').then(function(res){
+      Axios.get('/api/city.json').then(res =>{
         if(res.data.ret){
           const data = res.data.data
           self.city = data.hotCities[0].name
@@ -51,7 +53,7 @@ export default {
     },
     _indexList(){
       const self = this
-      axios.get('/static/mock/index.json').then(function(res){
+      Axios.get('/api/index.json').then(res => {
         if(res.data.ret){
           console.log(res.data.data)
           const data = res.data.data

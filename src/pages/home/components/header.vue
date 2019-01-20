@@ -7,10 +7,12 @@
       <span class="iconfont ">&#xe819;</span>
       名称，地点，主题等
     </div>
-    <div class="header-city">
-      {{this.city}}
+    <router-link to="/city">
+       <div class="header-city">
+        {{this.city}}
        <span class="iconfont  city-icon">&#xe627;</span>
-    </div>
+      </div>
+    </router-link>
  </div>
 </template>
 <script>
@@ -26,8 +28,8 @@ export default {
 .header
   display flex
   background-color $bgColor
-  line-height .86rem
-  height .86rem
+  line-height $nav-height
+  height  $nav-height
   color #fff
   .header-left
     float left
@@ -40,6 +42,7 @@ export default {
     width 1.24rem
     float right
     text-align center
+    color #fff
     .city-icon
       font-size .24rem
   .header-content
