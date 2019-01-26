@@ -1,6 +1,6 @@
 <template>
   <div>
-      <home-header :city = "city"></home-header>
+      <home-header></home-header>
       <home-swiper :swiperList= "swiperList"></home-swiper>
       <home-icons :iconList = "iconList"></home-icons>
       <home-recommend :recommendList= "recommendList"></home-recommend>
@@ -16,18 +16,22 @@ import HomeRecommend from './components/recommend'
 import HomeList from './components/list'
 import HomeCity from '../city/city'
 import Axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
   data(){
     return {
-      city: '',
       iconList: [],
       recommendList: [],
       weekendList: [],
       data: [],
-      swiperList: []
+      swiperList: [],
+      lastCity: ''
     }
+  },
+  computed: {
+    ...mapState(['city'])
   },
   components: {
     HomeHeader,
@@ -38,22 +42,13 @@ export default {
     HomeCity
   },
   mounted(){
-    this._cityList()
+    this.lastCity = this.city
     this._indexList()
   },
   methods: {
-    _cityList(){
-      const self = this
-      Axios.get('/api/city.json').then(res =>{
-        if(res.data.ret){
-          const data = res.data.data
-          self.city = data.hotCities[0].name
-        }
-      })
-    },
     _indexList(){
       const self = this
-      Axios.get('/api/index.json').then(res => {
+      Axios.get('/api/index.json?city=' + this.city).then( res => {
         if(res.data.ret){
           console.log(res.data.data)
           const data = res.data.data
@@ -63,6 +58,12 @@ export default {
           self.swiperList = data.swiperList
         }
       })
+    }
+  },
+  activated(){
+    if(this.lastCity !== this.city) {
+      this.lastCity = this.city
+      this._indexList()
     }
   }
 }

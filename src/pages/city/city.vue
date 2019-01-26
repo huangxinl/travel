@@ -1,7 +1,7 @@
 <template>
     <div>
         <city-header></city-header>
-        <city-search></city-search>
+        <city-search :cities= "cities"></city-search>
         <city-list :hotCities = "hotCities" :cities= "cities" :letter = "letter"></city-list>
         <city-rightlist :cities= "cities"  @spot = "spot"></city-rightlist>
     </div>
@@ -31,6 +31,7 @@ export default {
     methods: {
         spot(letter){
             this.letter = letter //通过 子 -》 父 -》 子 传递
+            // console.log(this.letter)
         }
     },
     mounted(){

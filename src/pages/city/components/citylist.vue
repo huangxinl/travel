@@ -5,7 +5,7 @@
         <div class="current-city"><span>当前城市</span></div>
         <div class="btn-wrapper">
             <div class="btn">
-                <span class="btn-city">北京</span>
+                <span class="btn-city">{{this. currentCity}}</span>
             </div>
         </div>
     </div>
@@ -13,7 +13,7 @@
         <div class="current-city"><span>热门城市</span></div>
         <div class="btn-wrapper">
             <div class="btn"  v-for="item of hotCities" :key="item.id">
-                <span class="btn-city">{{item.name}}</span>
+                <span class="btn-city" @click = "handleBtnClick(item.name)">{{item.name}}</span>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
         <div class="hot-city">
         <div class="current-city"><span>{{key}}</span></div>
         <div class="list-wrapper"  v-for="tip of item">
-            <div class="list-btn border-bottom" >
+            <div class="list-btn" @click = "handleBtnClick(tip.name)">
                 {{tip.name}}
             </div>
         </div>
@@ -33,6 +33,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapState,mapMutations } from 'vuex'
 export default {
   name: "CityList",
   props: {
@@ -42,22 +43,35 @@ export default {
     cities: Object,
     letter: String
   },
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
   watch: {
     letter () {
       if (this.letter) {
         const element = this.$refs[this.letter][0]
-        console.log(element)
-        this.BScroll.scrollToElement(element)
+        this.BScroll.scrollToElement(element,500)
       }
     }
   },
- mounted(){
+  methods:{
+    handleBtnClick(city){
+      //  this.$store.dispatch('changeCity', city)
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
+  },
+  mounted(){
      this.BScroll = new BScroll(this.$refs.wrapper)
- }
+  }
 };
 </script>
 
 <style lang="stylus" scoped>
+@import '~styles/mixins.styl'
 
 .border-bottom::before 
   border-color #cccccc
@@ -84,7 +98,8 @@ export default {
       width: 25%;
       line-height: 0.86rem;
       text-align: center;
-      .btn-city 
+      .btn-city
+        ellipsis()
         width: 100%;
         box-sizing: border-box;
         border: 1px solid #eee;
@@ -95,6 +110,6 @@ export default {
     height .86rem
     width 100%
     .list-btn
-        line-height .86rem
-        padding-left .2rem
+      line-height .86rem
+      padding-left .2rem
 </style>
