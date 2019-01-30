@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="recommend-title">热销推荐</div>
-        <div class="recommend-item" v-for="item of recommendList">
+        <router-link :to="'/detail/'+ item.id" tag="div"  class="recommend-item" v-for="item of recommendList" :key= "item.id"> 
             <div class="icon-img-wrapper">
                 <img :src="item.imgUrl" alt="" class="icon-img">
             </div>
@@ -10,7 +10,7 @@
                 <p class="desc">{{item.desc}}</p>
                 <button class="item-btn">查看详情</button>
             </div>
-        </div>
+        </router-link>
     </div>
 </template>
 

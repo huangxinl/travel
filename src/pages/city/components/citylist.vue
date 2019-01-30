@@ -20,7 +20,7 @@
     <div  v-for="(item,key) of cities"  :ref= "key" :key= "key">
         <div class="hot-city">
         <div class="current-city"><span>{{key}}</span></div>
-        <div class="list-wrapper"  v-for="tip of item">
+        <div class="list-wrapper border-bottom"  v-for="tip of item">
             <div class="list-btn" @click = "handleBtnClick(tip.name)">
                 {{tip.name}}
             </div>
@@ -99,6 +99,7 @@ export default {
       line-height: 0.86rem;
       text-align: center;
       .btn-city
+        color #396fa5
         ellipsis()
         width: 100%;
         box-sizing: border-box;
