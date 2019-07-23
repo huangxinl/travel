@@ -18,4 +18,8 @@ npm run build
 npm run build --report
 ```
 
-![Alt](https://github.com/huangxinl/wallPaperApp/blob/master/img/1%20(1).png)
+![Alt](https://github.com/huangxinl/travel/blob/master/img/1.png)
+
+![Alt](https://github.com/huangxinl/travel/blob/master/img/2.png)
+
+![Alt](https://github.com/huangxinl/travel/blob/master/img/3.png)
